@@ -26,6 +26,9 @@ func _getShortestPathLength(nodeFrom int, nodeTo int, graph [][]int, numberOfNod
 
 func getShortestPathLength(accumLength int, nodeFrom int, nodeTo int, visitedNodes []int, graph [][]int) int {
 	var lengths []int
+	if nodeFrom == nodeTo {
+		return 0
+	}
 	visitedNodes[nodeFrom] = 1
 	nextNodes := getNextNodesFor(nodeFrom, graph, visitedNodes)
 	for _, nextNode := range nextNodes {
@@ -108,7 +111,7 @@ func Scan(a *int) (int, error) {
 func min(numbers []int) int {
 	m := 0
 	for i, e := range numbers {
-		if i==0 || e < m {
+		if i == 0 || e < m {
 			m = e
 		}
 	}
